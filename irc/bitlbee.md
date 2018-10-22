@@ -17,6 +17,7 @@ Slack setup guide [here](https://blog.nobugware.com/post/2018/bitlbee_slack_hang
 ```
 register <password>
 set nick_lowercase true
+set offline_user_quits false
 
 # facebook stuff
 account add facebook <email> <password>
