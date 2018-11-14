@@ -1,6 +1,10 @@
 # BitlBee
 This guide will desribe how I have setup my bitlbee.
 
+## Plugins folders (Debian/Ubuntu)
+- libpurple - `/usr/lib/purple-2/`
+- native `/usr/lib/bitlbee/`
+
 ## Docker 
 I have used my Docker image [here](https://github.com/eyJhb/docker-images/tree/master/bitlbee), which should get you up and running with 
 

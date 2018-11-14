@@ -1,0 +1,77 @@
+diff --git a/server2.conf b/server.conf
+index 936e96c..40786c5 100644
+--- a/server2.conf
++++ b/server.conf
+@@ -98,7 +98,8 @@ dh dh2048.pem
+ # Each client will be able to reach the server
+ # on 10.8.0.1. Comment this line out if you are
+ # ethernet bridging. See the man page for more info.
+-server 10.8.0.0 255.255.255.0
++;server 10.8.0.0 255.255.255.0
++server 172.20.0.0 255.255.255.0
+ 
+ # Maintain a record of client <-> virtual IP address
+ # associations in this file.  If OpenVPN goes down or
+@@ -189,7 +190,7 @@ ifconfig-pool-persist ipp.txt
+ # (The OpenVPN server machine may need to NAT
+ # or bridge the TUN/TAP interface to the internet
+ # in order for this to work properly).
+-;push "redirect-gateway def1 bypass-dhcp"
++push "redirect-gateway def1 bypass-dhcp"
+ 
+ # Certain Windows-specific network settings
+ # can be pushed to clients, such as DNS
+@@ -197,8 +198,8 @@ ifconfig-pool-persist ipp.txt
+ # http://openvpn.net/faq.html#dhcpcaveats
+ # The addresses below refer to the public
+ # DNS servers provided by opendns.com.
+-;push "dhcp-option DNS 208.67.222.222"
+-;push "dhcp-option DNS 208.67.220.220"
++push "dhcp-option DNS 208.67.222.222"
++push "dhcp-option DNS 208.67.220.220"
+ 
+ # Uncomment this directive to allow different
+ # clients to be able to "see" each other.
+@@ -242,6 +243,7 @@ keepalive 10 120
+ # The second parameter should be '0'
+ # on the server and '1' on the clients.
+ tls-auth ta.key 0 # This file is secret
++key-direction 0
+ 
+ # Select a cryptographic cipher.
+ # This config item must be copied to
+@@ -250,6 +252,7 @@ tls-auth ta.key 0 # This file is secret
+ # negotiate AES-256-GCM in TLS mode.
+ # See also the ncp-cipher option in the manpage
+ cipher AES-256-CBC
++auth SHA256
+ 
+ # Enable compression on the VPN link and push the
+ # option to the client (2.4+ only, for earlier
+@@ -271,8 +274,8 @@ cipher AES-256-CBC
+ #
+ # You can uncomment this out on
+ # non-Windows systems.
+-;user nobody
+-;group nogroup
++user nobody
++group nogroup
+ 
+ # The persist options will try to avoid
+ # accessing certain resources on restart
+@@ -303,7 +306,7 @@ status openvpn-status.log
+ # 4 is reasonable for general usage
+ # 5 and 6 can help to debug connection problems
+ # 9 is extremely verbose
+-verb 3
++verb 4
+ 
+ # Silence repeating messages.  At most 20
+ # sequential messages of the same message
+@@ -312,4 +315,4 @@ verb 3
+ 
+ # Notify the client that when the server restarts so it
+ # can automatically reconnect.
+-explicit-exit-notify 1
+\ No newline at end of file
++explicit-exit-notify 1
